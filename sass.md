@@ -6,50 +6,6 @@
 >
 > 3.  插值语句 (interpolation) 也可写进多行注释中输出变量值
 >
-> 例如：
->
-> ```scss
-> // compile scss files to css
-> // it's ready to do it.
-> $pink: #f3e1e1;
-> html {
->   background-color: $pink;
-> }
->
-> $name: '子豪';
-> /*!
-> 	namme: #{$name}.
-> */
-> ```
->
-> 开发模式编译后:
->
-> ```css
-> /* 
-> 	hello
-> 	world!
-> */
-> html {
->   background-color: #f3e1e1;
-> }
-> /*!
-> 	你好
-> */
-> ```
->
-> 压缩输出模式编译后：
->
-> ```css
-> html {
->   background-color: #f3e1e1;
-> }
-> /*!
-> 	'你好
-> */
-> ```
-
----
-
 ## 二、变量
 
 ### 1.定义
