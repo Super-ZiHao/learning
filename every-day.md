@@ -57,7 +57,7 @@ body { margin-left: calc(100vw - 100%) } /* 或 */ body { padding-left: calc(100
 
 > 建议——当我们改变大小的时候，会产生重排，给dom设置颜色的时候，会导致重绘，重排一定会重绘，单重绘不会重排，重排会影响性能，所以尽可能减少重排的操作。
 
-### 4-18、用 display: flex; align-items: center ; 之后发现字体没有垂直居中?
+### 4-18、用 flex items-center 之后发现字体没有垂直居中?
 
 > 产生原因——字体的 line-height 不是默认值，影响到了排列
 
