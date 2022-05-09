@@ -107,3 +107,27 @@ html {
 /* 当宽度比高度要小——例如 手机 端屏幕，此时的 1vmax === 1vh */
 /* vmin相反就不做多例子了 */
 ```
+
+### 5-09、inset 的作用？
+
+> 定位的四个方向属性的缩写~~
+
+```css
+.box {
+    poasition: relative;
+    
+    inset: 0;
+    /* 等同于 `top: 0; right: 0; bottom: 0; left: 0;` */
+
+    inset: 1em 2em;
+    /* 等同于 `top: 1em; right: 2em; bottom: 1em; left: 2em;` */
+
+    inset: 1em 2em 3em;
+    /* 等同于 `top: 1em; right: 2em; bottom: 3em; left: 2em;` */
+
+    inset: 1em 2em 3em 4em;
+    /* 等同于 `top: 1em; right: 2em; bottom: 3em; left: 4em;` */
+}
+
+```
+
