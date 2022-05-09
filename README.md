@@ -1,7 +1,10 @@
 ## 初识
 ## 进阶
-### 1、[Sass](sass)
-### 2、[TypeScript](typescript)
+### 1、[Sass](notes/sass)
+
+### 2、[Less](notes/less)
+
+### 3、[TypeScript](notes/typescript)
 
 ## 日积月累
 
