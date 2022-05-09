@@ -116,7 +116,7 @@
 }
 ```
 
-### 三、print-color-adjust: exact
+### 三、print-color-adjust
 
 >  一个在打印时候可能会用到的属性。
 
