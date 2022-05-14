@@ -6,6 +6,12 @@
 
 ### 3、[TypeScript](notes/typescript)
 
+## 拓展 —— 动画
+
+### 1、[SVG](notes/svg)
+
+### 2、Three.js
+
 ## 日积月累
 
 ### 1、[每日一问](every-day)
