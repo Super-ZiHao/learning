@@ -132,8 +132,8 @@ element.getAttribute(name)
 - 颜色、饱和度、亮度三个分量
 - 格式：hsl( h, s%, l%)
 - 取值范围：
-  - h：[ 0, 359 ] 
-  - s，l：[ 0, 100 ]
+  - h: [ 0, 359 ] 
+  - s，l: [0, 100 ]
 
 ##### Ⅱ、渐变
 
@@ -219,7 +219,7 @@ element.getAttribute(name)
 </svg>
 ```
 
-<pattern>  使用次标签定义好一个背景，可以被其他图形以 fill 的形式调用，成为那个图形的背景
+<pattern>  使用此标签定义好一个背景，可以被其他图形以 fill 的形式调用，成为那个图形的背景
 
 ### 三、Path 的使用 （高级）
 
@@ -268,9 +268,10 @@ element.getAttribute(name)
              M 0 100 h 100
              M 0 0 l 100 100 
              M 100 0 l -100 100"
-          stroke="#fff" stroke-width="2" />
+          stroke="#000" stroke-width="2" />
 </svg>
 </div>
+
 
 
 #### 3、弧线命令
@@ -285,13 +286,16 @@ element.getAttribute(name)
 - x，y - 弧的终点位置
 
 ```xml
-<svg>
-	<path d="M 0 0 h 100
+<svg style="height: 100px; width: 100px;">
+    <path d="M 0 0 h 100
              M 0 0 v 100
              M 0 100 A 100 100 0 0 0 100 0 
              "
-          stroke="#fff" fill="transparent" />
+          stroke="#000" fill="transparent" />
 </svg>
+<!--
+	效果: 如下
+-->
 ```
 
 <div style="display: flex; justify-content: center;">
@@ -300,9 +304,10 @@ element.getAttribute(name)
                  M 0 0 v 100
                  M 0 100 A 100 100 0 0 0 100 0 
                  "
-              stroke="#fff" fill="transparent" />
+              stroke="#000" fill="transparent" />
     </svg>
 </div>
+
 
 #### 4、贝塞尔曲线命令
 
@@ -311,42 +316,112 @@ Q(x1 y1 x y) —— 二次贝塞尔曲线
 C(x1 y1 x2 y2 x y) —— 三次贝塞尔曲线
 
 ```xml
-<svg>
-	<path d="M 0 0 Q 0 100 100 100
-             M 100 100 C 200 0 300 100 400 0"
-          stroke="#fff" fill="transparent" />
+<svg style="height: 120px; width: 400px;">
+    <path d="M 0 0 Q 0 100 100 100
+             M 100 100 C 200 0 300 100 400 0
+             "
+          stroke="#000" fill="transparent" />
 </svg>
+<!--
+	使用方法:
+ 	  二次 —— Q x1 y1 x y
+		x1、y1 表示的是贝塞尔曲线中的往外拉伸的点
+		x、y 表示的是线的终点
+	  三次 —— C x1 y1 x2 y2 x y
+		类似与二次贝塞尔曲线用法
+	效果：如下
+-->
 ```
 
 <div style="display: flex; justify-content: center;">
-    <svg style="height: 100px; width: 400px;">
+    <svg style="height: 120px; width: 400px;">
         <path d="M 0 0 Q 0 100 100 100
                  M 100 100 C 200 0 300 100 400 0
                  "
-              stroke="#fff" fill="transparent" />
+              stroke="#000" fill="transparent" />
     </svg>
 </div>
 
+
 ### 四、SVG 文本
 
-#### 1、<text> 和 <tspan> 创建文本
+#### 1、text 和  tspan  创建文本
 
 ```xml
-<text x="" y="" dx="" dy="">你好我是 Text 文本标签</text>
+<svg style="height: 200px">
+	<text dx="10 20 30 40 50" dy="10 20 30 40 50">ABCDE</text>
+</svg>
 <!--
-	dx、dy: 用于控制文本基线位置，值可以为一个，或者多个
+	作用: 在 svg 中展示文本
+	属性:
+	  1、dx、dy —— 用于控制文本基线位置，值可以为一个，或者多个
 		一个的时候，统一设置够所有文字
 		多个的时候，从第一个文字开始依次设置
+	  2、text-anchor —— 文本对齐方式 start middle end
+	使用：text 标签
+	  
+		
+	效果: 如下
 -->
-例如：<text dx="10 20 30 40 50" dy="10 20 30 40 50">ABCDE</text>
 ```
 
 <div style="display: flex; justify-content: center;">
     <svg style="height: 200px"><text dx="10 20 30 40 50" dy="10 20 30 40 50">ABCDE</text></svg>
 </div>
+#### 2、textPath - 让文本在指定路径上排列
 
-2、垂直居中问题
+- 使用方法
 
-3、<textPath> 让文本在指定路径上排列
+```xml
+<svg style="height: 200px; width: 800px;">
+    <path id="path1" d="M 100 100
+                        Q 200 0 300 100
+                        T 500 100" stroke="#000" fill="none" />
+    <text style="font-size: 24px;" fill="#000" stroke="#000">
+        <textPath xlink:href="#path1">
+            这个文字先上去，又下来了。Upside down in english!
+        </textPath>
+    </text>
+</svg>
+<!--
+	作用: 将一段文字摆放在一个路径上。
+	属性：
+	  1、xlink:href —— 绑定要使用的路径
+	  2、startOffset —— 文字开始摆放的位置
+	使用：
+	  1、textPath 标签中的 xlink:href 属性绑定需要放置的路径
+	  2、将摆放的文字写入 textPath 标签中
+	效果: 如下
+	ps: 假如你只能看到一根贝塞尔曲线，那你可以尝试着吧这段代码放到 html 中，你将看到完整的样子
+-->
+```
 
-4、<a> 插入超链接
+<div style="display: flex; justify-content: center;">
+    <svg style="height: 200px; width: 800px;">
+        <path id="path1" d="M 100 100
+                            Q 200 0 300 100
+                            T 500 100" stroke="#000" fill="none" />
+        <text style="font-size: 24px;" fill="#000" stroke="#000">
+            <textPath xlink:href="#path1">
+                这个文字先上去，又下来了。Upside down in english!
+            </textPath>
+        </text>
+    </svg>
+</div>
+
+#### 3、a - 插入超链接
+
+> 使用方式与  html 中的 a 标签基本一致
+
+- 可以添加在任何的图形上
+- xlink:href 指定连接地址
+- xlink:title 指定连接提示
+- target 指定打开目标
+
+### 五、图形的引用、裁切和蒙蔽
+
+待续...
+
+### 六、SVG 动画
+
+待续...
