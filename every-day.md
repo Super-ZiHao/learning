@@ -131,3 +131,9 @@ html {
 
 ```
 
+### 5-16、如何用css 的方式让图片变得更清晰？
+
+>  image-rendering：crisp-edges —— 它用于指示算法将保留图像中的对比度和边。由于使用anti-aliasing，它不会使颜色变平滑或使图像模糊。此处使用的一些算法是nearest-neighbor和其他非平滑缩放算法。
+>
+> 其他属性，详情请看 [ image-rendering](./unusualcss?id=六、 image-rendering)
+
