@@ -420,8 +420,90 @@ C(x1 y1 x2 y2 x y) —— 三次贝塞尔曲线
 
 ### 五、图形的引用、裁切和蒙蔽
 
-待续...
+#### 1、clip - 裁切图像  
+
+> ​	clipPath 定义裁切路径 —— 路径为两个图形的重合处
+
+```xml
+<clipPath id="light-clip">
+    <polygon />
+    <circle />
+</clipPath>
+```
+
+> 图形上加 clip-path 属性指定此块区域被显示出来，其余部分被裁减
+
+```xml
+<ellipse clip-path="url(#light-clip)"/>
+```
+
+
+
+#### 2、mask - 创建蒙板
+
+> mask 标签定义蒙板
+
+```xml
+<mask id="fading">
+    <rect />
+</mask>
+```
+
+> 图形添加 mask 属性绑定蒙板
+
+```xml
+<ellipse mask="url(#fading)"/>
+```
+
+
 
 ### 六、SVG 动画
 
-待续...
+> svg动画有两种方式绑定要进行动画的元素
+>
+> xlink:href="url(#id)"
+>
+> 直接写在 元素标签里
+
+#### 1、animate
+
+```xml
+<animate
+         xlink:href="url(#id)"
+         attributeType="XML"
+         attributeName="x"
+         begin="goright.end"
+         from="100"
+         to="500"
+         dur="3s"
+         fill="freeze"
+         repeatCount="10"
+         />
+
+<!--
+	begin：指定动画开始，这里是指在 goright 动画结束后执行
+	fill=”freeze"：保持在动画最后一帧
+	repeatCount：动画执行次数
+-->
+```
+
+
+
+#### 2、animateTransform
+
+> 用法与上面一致，是对 transform 属性的动画修改
+
+#### 3、animateMotion
+
+```xml
+<animateMotion path="" rotate="auto">
+	<mpath xlink:href="#motion-path" />
+</animateMotion>
+              
+<!--
+	path：控制图形按照这个路径移动
+	或者不设置path —— 使用 mpath 的 xlink:href 属性指定一个 <path>标签
+	rotate:图形的旋转方向
+-->
+```
+
